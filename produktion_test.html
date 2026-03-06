@@ -1,0 +1,464 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lean Produktion - Vollständige Zusammenfassung</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .nav-overview {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        .nav-overview h2 {
+            color: #1a5276;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .nav-overview ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-overview a {
+            color: #2980b9;
+            text-decoration: none;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-overview a:hover {
+            background: #ecf0f1;
+            padding-left: 1rem;
+        }
+
+        section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            color: #1a5276;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+        }
+
+        section h3 {
+            color: #2980b9;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e6ed 100%);
+            border-left: 5px solid #3498db;
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h4 {
+            color: #1a5276;
+            margin-bottom: 0.5rem;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .principle-card {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+
+        .principle-card .number {
+            background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .principle-card h4 {
+            color: #1a5276;
+            margin-bottom: 0.5rem;
+        }
+
+        .waste-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .waste-table th {
+            background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .waste-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .waste-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .waste-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: scale(1.02);
+        }
+
+        .tool-card-header {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .tool-card-body {
+            padding: 1.5rem;
+        }
+
+        .tool-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tool-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tool-card li::before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+            border: 2px solid #f0ad4e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-box h4 {
+            color: #d68910;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .example-box h4::before {
+            content: "💡";
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .benefits-list li {
+            background: linear-gradient(135deg, #d5f4e6 0%, #a8e6cf 100%);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .benefits-list li::before {
+            content: "✅";
+            font-size: 1.2rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .comparison-table th {
+            background: #1a5276;
+            color: white;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: bold;
+            background: #f8f9fa;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #1a5276, #3498db);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #3498db;
+        }
+
+        .timeline-item h4 {
+            color: #1a5276;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .waste-table, .comparison-table {
+                font-size: 0.85rem;
+            }
+
+            .waste-table th, .waste-table td,
+            .comparison-table th, .comparison-table td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .stat-card .number {
+                font-size: 2rem;
+            }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏭 Lean Produktion</h1>
+        <p>Vollständige Zusammenfassung - Prinzipien, Methoden & Anwendung</p>
+    </header>
+
+    <div class="container">
+        <nav class="nav-overview">
+            <h2>📋 Inhaltsübersicht</h2>
+            <ul>
+                <li><a href="#definition">1. Definition & Ursprung</a></li>
+                <li><a href="#prinzipien">2. Die 5 Lean-Prinzipien</a></li>
+                <li><a href="#verschwendung">3. Die 8 Arten der Verschwendung</a></li>
+                <li><a href="#methoden">4. Lean-Methoden & Werkzeuge</a></li>
+                <li><a href="#beispiele">5. Praktische Beispiele</a></li>
+                <li><a href="#vorteile">6. Vorteile & Herausforderungen</a></li>
+                <li><a href="#implementierung">7. Implementierung</a></li>
+                <li><a href="#vergleich">8. Lean vs. Traditionell</a></li>
+            </ul>
+        </nav>
+
+        <section id="definition">
+            <h2>1. Definition & Ursprung</h2>
+            
+            <div class="highlight-box">
+                <h4>Was ist Lean Produktion?</h4>
+                <p><strong>Lean Produktion</strong> (auch "Schlanke Produktion" genannt) ist eine Produktionsphilosophie, die darauf abzielt, <strong>Verschwendung zu minimieren</strong> und gleichzeitig den <strong>Kundennutzen zu maximieren</strong>. Das Ziel ist es, mit weniger Ressourcen mehr Wert zu schaffen.</p>
+            </div>
+
+            <h3>Historischer Hintergrund</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>1940er Jahre - Ursprung bei Toyota</h4>
+                    <p>Taiichi Ohno und Eiji Toyoda entwickeln das Toyota Production System (TPS) als Antwort auf begrenzte Ressourcen in der Nachkriegszeit Japans.</p>
+                </div>
+                <div
