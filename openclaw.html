@@ -1,0 +1,419 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw – Vollständige Übersicht</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #1d1d1f;
+            background-color: #fbfbfd;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(251, 251, 253, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 16px 14px;
+            text-decoration: none;
+            color: #1d1d1f;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: #0071e3;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 140px 20px 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 30px;
+            color: #1d1d1f;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 30px 0 15px;
+            color: #1d1d1f;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #424245;
+            font-size: 1.05rem;
+        }
+
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 25px;
+            color: #424245;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        th {
+            background: #f5f5f7;
+            font-weight: 600;
+            color: #1d1d1f;
+            font-size: 0.95rem;
+        }
+
+        td {
+            color: #424245;
+            font-size: 0.95rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #fafafa;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #1d1d1f;
+        }
+
+        .card p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+
+        .code-block {
+            background: #1d1d1f;
+            color: #f5f5f7;
+            padding: 25px;
+            border-radius: 12px;
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .code-block code {
+            color: #a8d4a8;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e8e8ed;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin: 3px;
+            color: #424245;
+        }
+
+        .tag.primary {
+            background: #0071e3;
+            color: white;
+        }
+
+        footer {
+            background: #f5f5f7;
+            padding: 40px 20px;
+            text-align: center;
+            color: #86868b;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            color: #86868b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            nav ul li a {
+                padding: 14px 10px;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            th, td {
+                padding: 12px;
+                font-size: 0.85rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#ueberblick">Überblick</a></li>
+            <li><a href="#funktionen">Funktionen</a></li>
+            <li><a href="#architektur">Architektur</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#usecases">Use Cases</a></li>
+            <li><a href="#vergleich">Vergleich</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="badge">🎮 Open Source Gaming</div>
+        <h1>OpenClaw</h1>
+        <p>Die vollständige Open-Source-Neuimplementierung des Klassikers Captain Claw – modern, erweiterbar und plattformübergreifend.</p>
+    </header>
+
+    <main>
+        <section id="ueberblick">
+            <h2>Was ist OpenClaw?</h2>
+            <p>OpenClaw ist eine quelloffene Neuimplementierung des beliebten 2D-Plattformspiels <strong>Captain Claw</strong> (auch bekannt als "Claw"), das ursprünglich 1997 von Monolith Productions entwickelt und von Microsoft veröffentlicht wurde. Das Projekt zielt darauf ab, das Originalspiel auf modernen Systemen spielbar zu machen und gleichzeitig neue Funktionen hinzuzufügen.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="icon">🏴‍☠️</div>
+                    <h3>Das Original</h3>
+                    <p>Captain Claw war ein ikonisches Jump-and-Run-Spiel der späten 90er Jahre mit einem Piraten-Kater als Hauptfigur.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🔓</div>
+                    <h3>Open Source</h3>
+                    <p>Der komplette Quellcode ist auf GitHub verfügbar und steht unter einer freien Lizenz zur Nutzung und Weiterentwicklung.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">💻</div>
+                    <h3>Cross-Platform</h3>
+                    <p>Läuft auf Windows, Linux und macOS dank moderner Technologien wie SDL2.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>📌 Wichtig zu wissen</h3>
+                <p>OpenClaw ist ein Engine-Remake, kein vollständiger Klon. Für das Spielen werden die Original-Spieldateien (Assets) von Captain Claw benötigt, da diese nicht im Open-Source-Projekt enthalten sind.</p>
+            </div>
+        </section>
+
+        <section id="funktionen">
+            <h2>Funktionen & Features</h2>
+            <p>OpenClaw bietet sowohl die klassische Spielerfahrung als auch moderne Verbesserungen:</p>
+
+            <h3>Kernfunktionen</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Beschreibung</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vollständige Levels</td>
+                        <td>Alle 14 Original-Level spielbar</td>
+                        <td><span class="tag primary">Vollständig</span></td>
+                    </tr>
+                    <tr>
+                        <td>Gegner & Bosse</td>
+                        <td>Alle Gegnertypen und Endbosse implementiert</td>
+                        <td><span class="tag primary">Vollständig</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sound & Musik</td>
+                        <td>Original-Soundtrack und Soundeffekte</td>
+                        <td><span class="tag primary">Vollständig</span></td>
+                    </tr>
+                    <tr>
+                        <td>Speicherstände</td>
+                        <td>Speichern und Laden des Spielfortschritts</td>
+                        <td><span class="tag primary">Vollständig</span></td>
+                    </tr>
+                    <tr>
+                        <td>Cheat-Codes</td>
+                        <td>Original-Cheats werden unterstützt</td>
+                        <td><span class="tag primary">Vollständig</span></td>
+                    </tr>
+                    <tr>
+                        <td>Level-Editor</td>
+                        <td>Eigene Level erstellen und teilen</td>
+                        <td><span class="tag">In Entwicklung</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Moderne Verbesserungen</h3>
+            <ul>
+                <li><strong>Höhere Auflösungen:</strong> Unterstützung für Full-HD, 4K und beliebige Auflösungen</li>
+                <li><strong>Vollbildmodus & Fenster:</strong> Flexibles Wechseln zwischen den Modi</li>
+                <li><strong>Verbesserte Steuerung:</strong> Gamepad-Unterstützung und anpassbare Tastenbelegung</li>
+                <li><strong>Modding-Support:</strong> Einfaches Hinzufügen von Custom Content</li>
+                <li><strong>Bessere Performance:</strong> Optimiert für moderne Hardware</li>
+                <li><strong>Bugfixes:</strong> Behebung von Fehlern aus dem Original</li>
+            </ul>
+        </section>
+
+        <section id="architektur">
+            <h2>Technische Architektur</h2>
+            <p>OpenClaw wurde von Grund auf neu entwickelt und nutzt moderne Technologien und Designmuster:</p>
+
+            <h3>Verwendete Technologien</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="icon">⚙️</div>
+                    <h3>C++</h3>
+                    <p>Die Hauptprogrammiersprache für Performance und Kontrolle über Hardware-nahe Funktionen.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🎨</div>
+                    <h3>SDL2</h3>
+                    <p>Simple DirectMedia Layer für plattformübergreifende Grafik, Audio und Input.</p>
+                </div>
